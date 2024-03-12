@@ -1,0 +1,47 @@
+
+<div class="bg-img">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="container">
+      <div>
+          <label for="name">Name</label>
+          <input type="text" formControlName="name" id="name" (focusout)="nameFocused = true">
+          <ng-container *ngIf="nameFocused && registerForm.controls['name'].touched" class="error-message">
+              <p *ngIf="registerForm.controls['name'].hasError('required')">This field is required!</p>
+              <p *ngIf="registerForm.controls['name'].hasError('minlength')">Name must be at least 9 characters long</p>
+          </ng-container>
+      </div>
+
+      <div>
+          <label for="address">Address</label>
+          <input type="text" formControlName="address" id="address" (focusout)="addressFocused = true">
+          <ng-container *ngIf="addressFocused && registerForm.controls['address'].touched" class="error-message">
+              <p *ngIf="registerForm.controls['address'].hasError('required')">This field is required!</p>
+              <p *ngIf="registerForm.controls['address'].hasError('minlength')">Password must be at least 9 characters long</p>
+          </ng-container>
+      </div>
+      <!-- <div >
+        <label for="email">Email</label>
+        <input type="text" class="form-control" formControlName="email" id="email" (focusout)="emailFocused = true" >
+        <ng-container *ngIf="nameFocused && registerForm.controls['email'].touched" class="error-message">
+            <p *ngIf="registerForm.controls['email'].hasError('required')">This field is required!</p>
+            <p *ngIf="registerForm.controls['email'].hasError('minlength')">Name must be at least 9 characters long</p>
+        </ng-container>
+    </div> -->
+    <div>
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" id="email">
+        <ng-container *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched" class="error-message">
+            <p *ngIf="registerForm.get('email').hasError('required')">This field is required!</p>
+            <p *ngIf="registerForm.get('email').hasError('pattern')">Please enter a valid email address.</p>
+        </ng-container>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" id="password" (focusout)="passwordFocused = true">
+        <ng-container *ngIf="passwordFocused && registerForm.controls['password'].touched" class="error-message">
+            <p *ngIf="registerForm.controls['password'].hasError('required')">This field is required!</p>
+            <p *ngIf="registerForm.controls['password'].hasError('minlength')">Password must be at least 9 characters long</p>
+        </ng-container>
+    </div>
+      <button type="submit" class="btn" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>

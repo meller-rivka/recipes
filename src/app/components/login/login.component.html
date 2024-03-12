@@ -1,0 +1,23 @@
+<div class="bg-img">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" id="name" (focusout)="nameFocused = true">
+            <ng-container *ngIf="nameFocused && loginForm.controls['name'].touched" class="error-message">
+                <p *ngIf="loginForm.controls['name'].hasError('required')">This field is required!</p>
+                <p *ngIf="loginForm.controls['name'].hasError('minlength')">Name must be at least 9 characters long</p>
+            </ng-container>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="text" formControlName="password" id="password" (focusout)="passwordFocused = true">
+            <ng-container *ngIf="passwordFocused && loginForm.controls['password'].touched" class="error-message">
+                <p *ngIf="loginForm.controls['password'].hasError('required')">This field is required!</p>
+                <p *ngIf="loginForm.controls['password'].hasError('minlength')">Password must be at least 9 characters long</p>
+            </ng-container>
+        </div>
+
+        <button type="submit" class="btn" [disabled]="loginForm.invalid">Login</button>
+    </form>
+</div>
