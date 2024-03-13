@@ -1,0 +1,48 @@
+<!-- <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let recipe of recipes">
+      <app-small-recipe [recipe]="recipe"></app-small-recipe>
+    </div>
+  </div> -->
+  <!-- <div class="row">
+    <app-small-recipe *ngFor="let recipe of recipes" [recipe]="recipe"></app-small-recipe>
+</div> -->
+<!-- <div class="row">
+  <div class="col-md-4" *ngFor="let recipe of recipes">
+    <app-small-recipe [recipe]="recipe"></app-small-recipe>
+  </div>
+</div> -->
+<!-- <div class="row photo-album">
+  <div class="col-md-4" *ngFor="let recipe of recipes">
+    <app-small-recipe [recipe]="recipe"></app-small-recipe>
+  </div>
+</div> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+ 
+	  
+      <div class="container cta-100 ">
+        <div class="container">
+          <div class="row blog">
+            <div class="col-md-12">
+              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <!-- <div class="row" > -->
+                      <div *ngFor="let recipe of recipes" class="bb">
+                        <app-small-recipe [recipe]="recipe"></app-small-recipe>
+                      </div>
+                  <!-- </div> -->
+                  <!--.item-->
+                </div>
+                <!--.carousel-inner-->
+              </div>
+              <!--.Carousel-->
+            </div>
+          </div>
+        </div>
+      </div>
+   

@@ -1,0 +1,67 @@
+<div class="bg-img">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="container">
+        <div>
+            <label for="nameRecipe">שם מתכון</label>
+            <input type="text" formControlName="nameRecipe" id="nameRecipe" (focusout)="nameRecipeFocused = true">
+            <ng-container *ngIf="nameRecipeFocused && recipeForm.controls['nameRecipe'].touched" class="error-message">
+                <p *ngIf="recipeForm.controls['nameRecipe'].hasError('required')">שדה חובה!</p>
+                <p *ngIf="recipeForm.controls['nameRecipe'].hasError('minlength')">שם חייב להיות לפחות מתווים</p>
+            </ng-container>
+        </div>
+        <div>
+            <label for="categoryCode">קטגוריה</label>
+            <select formControlName="categoryCode" id="categoryCode">
+                <option *ngFor="let category of categories" [value]="category.code">{{ category.name }}</option>
+            </select>
+            <ng-container *ngIf="recipeForm.controls['categoryCode'].touched" class="error-message">
+                <p *ngIf="recipeForm.controls['categoryCode'].hasError('required')">שדה חובה!</p>
+            </ng-container>
+        </div>
+        <div>
+            <label for="preparationTime">זמן הכנה (בדקות)</label>
+            <input type="number" formControlName="preparationTime" id="preparationTime">
+            <ng-container *ngIf="preparationTimeFocused && recipeForm.controls['preparationTime'].touched" class="error-message">
+                <p *ngIf="recipeForm.controls['preparationTime'].hasError('required')">שדה חובה!</p>
+                <p *ngIf="recipeForm.controls['preparationTime'].hasError('min')">זמן הכנה חייב להיות מספר חיובי</p>
+            </ng-container>
+        </div>
+        
+        <div>
+            <label for="levelOfDifficulty">רמת קושי</label>
+            <input type="number" formControlName="levelOfDifficulty" id="levelOfDifficulty">
+            <ng-container *ngIf="levelOfDifficultyFocused && recipeForm.controls['levelOfDifficulty'].touched" class="error-message">
+                <p *ngIf="recipeForm.controls['levelOfDifficulty'].hasError('required')">שדה חובה!</p>
+                <p *ngIf="recipeForm.controls['levelOfDifficulty'].hasError('min')">רמת הקושי חייבת להיות מספר חיובי</p>
+            </ng-container>
+        </div>
+        <div >
+            <label>רכיבים </label>
+            <div formArrayName="ingredients">
+                <div *ngFor="let ingredient of ingredientsArray.controls; let i = index">
+                    <input type="text" [formControlName]="i" (input)="addIngredient()" class="form-control" *ngIf="i === ingredientsArray.length - 1 || ingredient.value.trim() !== ''">
+                </div>
+            </div>
+            <button type="button" (click)="addIngredient()" class="btn btn-primary btn-add-ingredient">הוספת הרכיבים</button>
+          </div>
+            
+          <div >
+            <label>הוראות הכנה</label>
+            <div formArrayName="instructions">
+                <div *ngFor="let step of instructionsArray.controls; let i = index">
+                    <input type="text" [formControlName]="i" (input)="addPreparationStep()" class="form-control" *ngIf="i === instructionsArray.length - 1 || step.value.trim() !== ''">
+                </div>
+            </div>
+            <button type="button" (click)="addPreparationStep()" class="btn btn-primary btn-add-step">הוספת הוראות ההכנה</button>
+          </div> 
+          <div>
+            <label for="urlImage">ניתוב לתמונה</label>
+            <input type="url" formControlName="urlImage" id="urlImage" >
+            <ng-container *ngIf=" recipeForm.controls['urlImage'].touched" class="error-message">
+                <p *ngIf="recipeForm.controls['urlImage'].hasError('required')">שדה חובה!</p>
+            </ng-container>
+        </div>
+        <button type="submit" class="btn">שמור מתכון</button>
+    </form>
+</div>
+
+
