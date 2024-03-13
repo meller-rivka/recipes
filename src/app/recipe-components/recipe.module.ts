@@ -11,9 +11,6 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [AllRecipesComponent, AddRecipeComponent, EditRecipeComponent, SmallRecipeComponent],
-    imports: [
-        CommonModule, MatIconModule,
-        HourPipe,ReactiveFormsModule
-    ]
+    imports: [CommonModule, MatIconModule,HourPipe,ReactiveFormsModule]
 })
 export class RecipeModule { }
