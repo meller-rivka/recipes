@@ -1,6 +1,6 @@
 <div class="bg-img">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container">
-        <div>
+        <div class="form-group" >
             <label for="name">שם</label>
             <input type="text" formControlName="name" id="name" (focusout)="nameFocused = true">
             <ng-container *ngIf="nameFocused && loginForm.controls['name'].touched" class="error-message">
@@ -9,7 +9,7 @@
             </ng-container>
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="password">סיסמא</label>
             <input type="text" formControlName="password" id="password" (focusout)="passwordFocused = true">
             <ng-container *ngIf="passwordFocused && loginForm.controls['password'].touched" class="error-message">

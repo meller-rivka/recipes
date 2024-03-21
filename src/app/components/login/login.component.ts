@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
             }
           });
         } else if (res === true) {
+          this._register_service.saveCurrentUser(name,password);
+          this._register_service.changeName();
           this.route.navigate(['/recipe/all-recipes']);
         }
       }

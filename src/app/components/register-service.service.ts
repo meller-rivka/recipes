@@ -1,24 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../classes/User';
-const USER_KEY = 'currentUser';
+import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { log } from 'console';
+const USER_NAME = 'currentUser';
+const USER_PASSWORD = 'currentPassword';
+
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
+public usernameSource = new BehaviorSubject<string>("לא מחובר");
+ username$ = this.usernameSource.asObservable();
+//  public username:string="לא מחובר";
+
   public registerCode = 5;
-  public currentUser="לא מחובר";
-  public defaultUser="";
-  saveCurrentUser(userDetails: any) {
-    sessionStorage.setItem(USER_KEY, JSON.stringify(userDetails));
+  defaultUser: any;
+  saveCurrentUser(name: string, password: string) {
+    sessionStorage.setItem(USER_NAME, JSON.stringify(name));
+    sessionStorage.setItem(USER_PASSWORD, JSON.stringify(password));
+    this.changeName();
   }
 
   getCurrentUser(): any {
-    return JSON.parse(sessionStorage.getItem(USER_KEY) || '{}');
+    const name= JSON.parse(sessionStorage.getItem(USER_NAME) || '{}');
+    const password= JSON.parse(sessionStorage.getItem(USER_PASSWORD) || '{}');
+    const user={"name":name,"password":password};
+    console.log(user);
+    return user;
   }
-
   clearCurrentUser() {
-    sessionStorage.removeItem(USER_KEY);
+    sessionStorage.removeItem(USER_NAME);
+    sessionStorage.removeItem(USER_PASSWORD);
   }
   
   RegisterPlus(){
@@ -27,7 +41,7 @@ export class RegisterService {
   RegisterMinus(){
     this.registerCode-=1;
   }
-  private apiUrl = 'https://localhost:7090/api/User';
+  private apiUrl = 'https://localhost:44329/api/User';
 
   constructor(private http: HttpClient) { }
 
@@ -36,12 +50,23 @@ export class RegisterService {
     const res= this.http.post<boolean>(`${this.apiUrl}/Login`, loginDto);
     console.log(res);
     return res;
-    
     // return this.http.post(`${this.apiUrl}/login`, { "name" : name, "password" : password });
   }
-
+  getRegisters():Observable<User[]>{
+      return this.http.get<User[]>(this.apiUrl);
+  }
   register(newUser: User) {
     return this.http.post(this.apiUrl, newUser);
   }
+  getUserByNameAndPass(user:any){
+    return this.http.post(`${this.apiUrl}/UserByNameAndPassword`,user)
+  }
+  changeName() {
+    const username = JSON.parse(sessionStorage.getItem("currentUser") || "{}");
+    if(username)
+    this.usernameSource.next(username);
+  else
+  this.usernameSource.next("לא מחובר");
+  }
   
-}
+  }

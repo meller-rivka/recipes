@@ -59,19 +59,11 @@ export class RegisterComponent implements OnInit {
             text: "נוספת בהצלחה לרשימת המשתמשים",
             icon: "success"
           });
-          this._register_service.saveCurrentUser(name);
+          this._register_service.saveCurrentUser(name,password);
           this.route.navigate(['/recipe/all-recipes']);
         }
       }
     });
   }
-  // register() {
-  //   // Check if user already exists (replace this with actual logic)
-  //   if (this.username === 'existingUser') {
-  //     this.userExists = true;
-  //   } else {
-  //     // Proceed with logic to navigate to the recipes page
-  //     // Assuming navigation code here
-  //   }
-  // }
+ 
 }
