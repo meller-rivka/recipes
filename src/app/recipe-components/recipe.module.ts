@@ -8,9 +8,10 @@ import { SmallRecipeComponent } from './small-recipe/small-recipe.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HourPipe } from "../hour.pipe";
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { DetailsRecipeComponent } from './details-recipe/details-recipe.component';
 
 @NgModule({
-    declarations: [AllRecipesComponent, AddRecipeComponent, EditRecipeComponent, SmallRecipeComponent],
+    declarations: [AllRecipesComponent, AddRecipeComponent, EditRecipeComponent, SmallRecipeComponent,DetailsRecipeComponent],
     imports: [CommonModule, MatIconModule,HourPipe,ReactiveFormsModule]
 })
 export class RecipeModule { }

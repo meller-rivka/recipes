@@ -1,48 +1,62 @@
-<!-- <div class="row">
-    <div class="col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let recipe of recipes">
-      <app-small-recipe [recipe]="recipe"></app-small-recipe>
-    </div>
-  </div> -->
-  <!-- <div class="row">
-    <app-small-recipe *ngFor="let recipe of recipes" [recipe]="recipe"></app-small-recipe>
-</div> -->
-<!-- <div class="row">
-  <div class="col-md-4" *ngFor="let recipe of recipes">
-    <app-small-recipe [recipe]="recipe"></app-small-recipe>
-  </div>
-</div> -->
-<!-- <div class="row photo-album">
-  <div class="col-md-4" *ngFor="let recipe of recipes">
-    <app-small-recipe [recipe]="recipe"></app-small-recipe>
-  </div>
-</div> -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<div class="container mt-3 first">
+<div class="row" [formGroup]="filterForm">
+<div class="col-md-4">
+  <div class="form-group">
+    <!-- <label for="recipeName">Recipe Name:</label> -->
+    <label class="mb-1">שם מתכון</label>
+    <!-- <input type="text" class="form-control" id="recipeName" placeholder="Enter recipe name"> -->
+    <input type="text" formControlName="name" class="form-control mb-2" placeholder="שם">
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+    <label for="category">קטגוריה</label>
+    
+    <select formControlName="category" class="form-select mb-2" id="category">
+      <option value="">בחר קטגוריה</option>
+      <option *ngFor="let category of categoryList" [value]="category.code">{{ category.name }}</option>
+    </select>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+    <label for="prepTime"> זמן הכנה</label>
+    <select formControlName="preparationTime" class="form-select mb-2" >
+      <option value="">בחר טווח זמן</option>
+      <option value="short">Short (< 30 דקות)</option>
+      <option value="medium">Medium (30 - 60 דקות)</option>
+      <option value="long">Long (> 60 דקות)</option>
+    </select>
+  </div>
+</div>
+</div>
+</div>
 
- 
-	  
-      <div class="container cta-100 ">
-        <div class="container">
-          <div class="row blog">
-            <div class="col-md-12">
-              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <!-- <div class="row" > -->
-                      <div *ngFor="let recipe of recipes" class="bb">
-                        <app-small-recipe [recipe]="recipe"></app-small-recipe>
-                      </div>
-                  <!-- </div> -->
-                  <!--.item-->
+  <div class="container cta-100 ">
+    <div class="container">
+      <div class="row blog">
+        <div class="col-md-12">
+          <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="recipe-card-container">
+    
+                  <div class="row flex-wrap">  
+                    <!-- <div *ngFor="let recipe of recipes" class="col-md-4 mb-3">  <app-small-recipe [recipe]="recipe"></app-small-recipe>
+                    </div> -->
+                    <div *ngFor="let recipe of recipes" class="col-md-4 mb-3">
+                      <app-small-recipe *ngIf="applyFilters(recipe)" [recipe]="recipe"></app-small-recipe>
+                    </div>
+                  </div>
                 </div>
-                <!--.carousel-inner-->
               </div>
-              <!--.Carousel-->
             </div>
           </div>
         </div>
       </div>
-   
+    </div>
+  </div>
+<!-- </div> -->

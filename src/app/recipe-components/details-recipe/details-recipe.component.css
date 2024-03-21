@@ -1,0 +1,30 @@
+.img-fluid{
+   
+    width:450px;
+    height: auto;
+}
+
+.item-box-blog {
+    direction: rtl;
+    display: grid;
+    grid-template-columns: auto 4fr;
+    grid-template-rows: auto 4fr;
+    align-items: center;
+  }
+  li,div{
+    text-align: right;
+  }
+  ul li {
+    list-style: none;
+  }
+  
+  .item-box-blog-image {
+    grid-row: 1;
+  }
+  
+  .item-box-blog-body {
+    grid-row: 2;
+  }
+  .container {
+    margin-top: 180px;
+  }

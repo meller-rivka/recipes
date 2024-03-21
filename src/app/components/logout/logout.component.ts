@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RegisterService } from '../components/register-service.service';
+import { RegisterService } from '../register-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,6 +14,8 @@ export class LogoutComponent {
 
   onLogout() {
     this._service.clearCurrentUser();
+    this._service.usernameSource.next("לא מחובר");
+    // this._service.changeName();
     this.router.navigate(['/home']);
   }
 }

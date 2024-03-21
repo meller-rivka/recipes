@@ -1,31 +1,28 @@
 
-<div class="col-md-4" >
-    <div class="item-box-blog">
-      <div class="item-box-blog-image">
-        <!--Date-->
-        <!-- <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">{{recipe.recipeName}}</span> </div> -->
-        <!--Image-->
-        
-        <figure><img alt="tdhtfg" src={{recipe.urlImage}} class></figure>
+<!-- <div class="col-md-4" > -->
+  <div class="item-box-blog">
+    <div class="item-box-blog-image">
+      <!--Date-->
+      <!-- <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">{{recipe.recipeName}}</span> </div> -->
+      <!--Image-->
+      
+      <figure><img alt="tdhtfg" src={{recipe.urlImage}} style="height: auto;" class></figure>
+    </div>
+    <div class="item-box-blog-body">
+      <!--Heading-->
+      <div class="item-box-blog-heading">
+          <h5>{{recipe.nameRecipe}}</h5>
       </div>
-      <div class="item-box-blog-body">
-        <!--Heading-->
-        <div class="item-box-blog-heading">
-          <a href="#" tabindex="0">
-            <h5>{{recipe.nameRecipe}}</h5>
-          </a>
-        </div>
-        <span>
-        <!-- <mat-icon *ngFor="let i of [].constructor(recipe.difficultyLevel); let index = index" class="icon">star</mat-icon> -->
-        <mat-icon *ngFor="let _ of generateStarArray(recipe.levelOfDifficulty)" class="icon">star</mat-icon>
-            </span>
-        <!--Text-->
-        <div class="item-box-blog-text">
-          <p>משך זמן ההכנה</p>
-          {{ recipe.preparationTime| hour}}
-        </div>
-        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-        <!--Read More Button-->
+      <span>
+      <!-- <mat-icon *ngFor="let i of [].constructor(recipe.difficultyLevel); let index = index" class="icon">star</mat-icon> -->
+      <mat-icon *ngFor="let _ of generateStarArray(recipe.levelOfDifficulty)" class="icon">star</mat-icon>
+          </span>
+      <!--Text-->
+      <div class="item-box-blog-text">
+        <p>משך זמן ההכנה</p>
+        {{ recipe.preparationTime| hour}}
       </div>
+      <div class="mt"> <a (click)="navigateToRecipeDetails()" tabindex="0" class="btn bg-blue-ui white read">לפרטי המתכון</a> </div>
+      <!--Read More Button-->
     </div>
   </div>

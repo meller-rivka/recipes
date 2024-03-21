@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="item-box-blog">
+     
+      <div class="item-box-blog-image">
+        <div class="item-box-blog-heading">
+          <h1>{{ recipe.nameRecipe }}</h1>
+        </div>
+        <figure><img alt="{{ recipe.nameRecipe }}" src="{{ recipe.urlImage }}" class="img-fluid"></figure>
+      </div>
+      <div class="item-box-blog-body">
+       
+        <div class="item-box-blog-details">
+          <div class="item-box-blog-detail">
+            <span class="detail-icon"><mat-icon>{{getCategoryIcon()}}</mat-icon></span>
+            <span class="detail-text">{{ getCategoryName()}}</span>
+          </div>
+          <div class="item-box-blog-detail">
+            <span class="detail-icon"><mat-icon>timer</mat-icon></span>
+            <span class="detail-text">{{ recipe.preparationTime | hour }}</span>
+          </div>
+          <div class="item-box-blog-detail">
+            <!-- <span class="detail-icon"><mat-icon>star</mat-icon></span> -->
+            <span class="detail-text">
+              דרגת קושי: 
+              <span *ngFor="let _ of generateStarArray(recipe.levelOfDifficulty)" class="icon"><mat-icon>star</mat-icon></span>
+            </span>
+          </div>
+        </div>
+        <div class="item-box-blog-ingredients">
+          <h3>רכיבים</h3>
+          <ul>
+            <li *ngFor="let ingredient of recipe.ingredients">
+              <span class="ingredient-icon" *ngIf="ingredient">
+                <mat-icon>check</mat-icon>
+              </span>
+              {{ ingredient}}
+            </li>
+          </ul>
+        </div>
+        <div class="item-box-blog-instructions">
+          <h3>אופן ההכנה</h3>
+          <ol>
+            <li *ngFor="let step of recipe.preparationSteps">
+              {{ step }}
+            </li>
+          </ol>
+        </div>
+        <div class="item-box-blog-delete" *ngIf="isCurrentUserAuthor">
+          <button class="btn btn-danger" (click)="deleteRecipe(recipe.recipeCode)">
+            <mat-icon>delete</mat-icon>
+            למחיקת המתכון
+          </button>
+          <button class="btn btn-primary" (click)="editRecipe()">
+            <mat-icon>edit</mat-icon>
+            לעריכת המתכון
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
