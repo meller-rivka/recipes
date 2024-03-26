@@ -1,27 +1,46 @@
-# AngularProject
+## Angular Recipe Management App
+## Description:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+This Angular app allows users to:
 
-## Development server
+Login with username and password.
+Register to the system.
+Add new recipes.
+Edit existing recipes.
+Delete recipes (only if the user added the recipe).
+View all recipes.
+Filter recipes by name, category, and preparation time.
+View full details of a single recipe, including image, ingredients list, and preparation instructions.
+## Features:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+  User management: login, registration, personal details management.
+  Recipe management: add, edit, delete, view.
+  Recipe filtering: by name, category, and preparation time.
+  Recipe details: image, name, category, difficulty, preparation time, ingredients list, preparation instructions.
+  Styling: using Bootstrap.
+  Image storage: in assets.
+  Requirements:
 
-## Code scaffolding
+C#.net6
+Angular CLI
+Bootstrap
+Installation:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install net6 and Angular CLI.
+Clone the project from GitHub.
+Install dependencies:
+npm install
+Run the app:
+ng serve
+Usage:
 
-## Build
+Login: Click "Login" in the Navbar and enter your username and password.
+Register: Click "Register" in the Navbar and fill in your details.
+Add recipe: Click "Add Recipe" in the Navbar and fill in the recipe details.
+Edit recipe: Click "Edit" in the recipe details.
+Delete recipe: Click "Delete" in the recipe details (only if you are the user who added the recipe).
+View all recipes: Click "All Recipes" in the Navbar.
+Filter recipes: Use the filter boxes at the top of the "All Recipes" page.
+View recipe details: Click on a recipe image or name on the "All Recipes" page.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Good luck!

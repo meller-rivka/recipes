@@ -11,14 +11,13 @@ import { RegisterService } from '../components/register-service.service';
   styleUrl: './top-bar.component.css'
 })
 export class TopBarComponent implements OnInit{
-  public register="לא מחובר";
-  public username: string | null = "לא מחובר";
+  public username="";
   constructor(private _service: RegisterService, private router: Router) {}
   ngOnInit(): void {
-    if (typeof sessionStorage !== 'undefined') {
-      this.username = sessionStorage.getItem("username");
-    }
-    
+    this._service.username$.subscribe((username) => (this.username = username));
+    console.log(this.username)
   }
+  
+ 
 
 }

@@ -10,27 +10,46 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse">
+              
                 <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" routerLink="">
+                      דף הבית <mat-icon>home</mat-icon>
+                    </a>
+                  </li>
                     <li class="nav-item active">
-                      <a class="nav-link" routerLink="/register/login">התחברות</a>
+                      <a class="nav-link" routerLink="/register/login">
+                        התחברות <mat-icon>person</mat-icon>
+                      </a>
                     </li>
+                    <li>
+                    <a class="nav-link" routerLink="/register/toRegister">
+                      הירשם <mat-icon>person_add</mat-icon>
+                    </a>
+                  </li>
                     <li class="nav-item active">
-                      <a class="nav-link" routerLink="/register/toRegister">הירשם</a>
+                      <a class="nav-link" routerLink="/logout">
+                        להתנתק <mat-icon>exit_to_app</mat-icon>
+                      </a>
                     </li>
+                    <a class="nav-link" routerLink="/recipe/all-recipes">
+                      כל המתכונים <mat-icon>cake</mat-icon>
+                    </a>
                     <li class="nav-item active">
-                      <a class="nav-link" routerLink="/logout">להתנתק</a>
+                      <a class="nav-link" routerLink="/recipe/add-recipe">
+                        הוסף מתכון <mat-icon>add</mat-icon>
+                      </a>
                     </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" routerLink="/recipe/all-recipes">כל המתכונים</a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" routerLink="/recipe/add-recipe">הוסף מתכון</a>
-                    </li>
-                    <!-- <mat-icon>person</mat-icon> -->
                 </ul>
             </div>
-            <div class="user-icon">
+            <div id="use">
+              
+              <p ><b>{{username}}</b><mat-icon>person</mat-icon></p>
+  
+            </div>
+            
+            <!-- <div class="user-icon">
               <mat-icon class="person-icon">person</mat-icon>
               <div class="user-greeting"> <span id="username">{{username}}</span></div>
-          </div>
+          </div> -->
         </nav>
