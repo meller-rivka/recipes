@@ -42,5 +42,3 @@ Delete recipe: Click "Delete" in the recipe details (only if you are the user wh
 View all recipes: Click "All Recipes" in the Navbar.
 Filter recipes: Use the filter boxes at the top of the "All Recipes" page.
 View recipe details: Click on a recipe image or name on the "All Recipes" page.
-
-Good luck!
